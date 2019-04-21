@@ -47,7 +47,7 @@ void decompress_files(const std::vector< std::string >& file_v, const std::strin
         //
         std::unique_ptr< std::istream > is_p =
             (f != "-"
-             ? std::unique_ptr< std::istream >(new zstr::ifstream(f))
+             ? std::unique_ptr< std::istream >(new zstr::ifstream(f, std::ios::binary | std::ios::in));
              : std::unique_ptr< std::istream >(new zstr::istream(std::cin)));
         //
         // Cat stream
