@@ -75,11 +75,13 @@ public:
         {
             this->avail_in = 0;
             this->next_in = Z_NULL;
-            ret = inflateInit2(this, 15+32);
+            // default use zlib format
+            ret = inflateInit2(this, 0);
         }
         else
         {
-            ret = deflateInit2(this, _level, Z_DEFLATED, 15+16, 8, Z_DEFAULT_STRATEGY);
+            // default use zlib format
+            ret = deflateInit2(this, _level, Z_DEFLATED, 15, 8, Z_DEFAULT_STRATEGY);
         }
         if (ret != Z_OK) throw Exception(this, ret);
     }
